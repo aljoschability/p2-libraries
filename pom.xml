@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aljoschability</groupId>
+	<artifactId>libraries</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1.0</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.reficio</groupId>
+				<artifactId>p2-maven-plugin</artifactId>
+				<version>1.1.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>default-cli</id>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<id>eigenbase:eigenbase-xom:1.3.4</id>
+									<source>true</source>
+									<transitive>false</transitive>
+									<override>true</override>
+									<instructions>
+										<Bundle-Description>XML object model for Java.</Bundle-Description>
+										<Bundle-License>http://www.apache.org/licenses/LICENSE-2.0.txt</Bundle-License>
+										<Bundle-Name>Library: eigenbase-XOM</Bundle-Name>
+										<Bundle-SymbolicName>org.eigenbase.xom</Bundle-SymbolicName>
+										<Bundle-Vendor>Julian Hyde</Bundle-Vendor>
+										<Bundle-Version>1.3.4.v20140109-1446</Bundle-Version>
+										<Import-Package>javax.xml.parsers,
+											org.apache.tools.ant;resolution:=optional,
+											org.apache.xerces.dom,
+											org.apache.xerces.parsers,
+											org.w3c.dom,org.xml.sax
+										</Import-Package>
+										<Export-Package>
+											org.eigenbase.xom.wrappers;uses:=&quot;org.eigenbase.xom,org.w3c.dom,org.xml.sax&quot;;version=&quot;1.3.5&quot;,
+											org.eigenbase.xom;uses:=&quot;org.apache.tools.ant&quot;;version=&quot;1.3.5&quot;
+										</Export-Package>
+									</instructions>
+								</artifact>
+								<artifact>
+									<id>commons-io:commons-io:2.4</id>
+									<source>true</source>
+									<transitive>false</transitive>
+									<override>true</override>
+									<instructions>
+										<Bundle-Description>The Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.</Bundle-Description>
+										<Bundle-License>http://www.apache.org/licenses/LICENSE-2.0.txt</Bundle-License>
+										<Bundle-Name>Library: Apache Commons IO</Bundle-Name>
+										<Bundle-SymbolicName>org.apache.commons.io</Bundle-SymbolicName>
+										<Bundle-Vendor>The Apache Software Foundation</Bundle-Vendor>
+										<Bundle-Version>2.4.0.v20120612-1819</Bundle-Version>
+										<Export-Package>
+											org.apache.commons.io;version=&quot;1.4.9999&quot;,
+											org.apache.commons.io.comparator;version=&quot;1.4.9999&quot;,
+											org.apache.commons.io.filefilter;version=&quot;1.4.9999&quot;,
+											org.apache.commons.io.input;version=&quot;1.4.9999&quot;,
+											org.apache.commons.io.output;version=&quot;1.4.9999&quot;,
+											org.apache.commons.io;version=&quot;2.4&quot;,
+											org.apache.commons.io.comparator;version=&quot;2.4&quot;,
+											org.apache.commons.io.filefilter;version=&quot;2.4&quot;,
+											org.apache.commons.io.input;version=&quot;2.4&quot;,
+											org.apache.commons.io.output;version=&quot;2.4&quot;,
+											org.apache.commons.io.monitor;version=&quot;2.4&quot;
+										</Export-Package>
+									</instructions>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.3.v20140905</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<webAppSourceDirectory>${basedir}/target/repository/</webAppSourceDirectory>
+					<webApp>
+						<contextPath>/site</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>pentaho-releases</id>
+			<url>http://repository.pentaho.org/artifactory/repo/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>reficio</id>
+			<url>http://repo.reficio.org/maven/</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
